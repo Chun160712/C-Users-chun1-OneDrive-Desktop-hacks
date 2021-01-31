@@ -123,4 +123,9 @@ body {
     border-radius: 20px;
   }
 
-
+  .feedback {
+    font-size: 20px;
+    text-align: left;
+    margin: 37px;
+    text-align: center;
+}

@@ -1,4 +1,0 @@
-specific
-measurable
-relevant
-time_bound

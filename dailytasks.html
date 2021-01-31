@@ -6,6 +6,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="some_styles.css">
+
+    <style>
+      button{
+        padding: 10px;
+        width: 10%;
+        background: #d9d9d9;
+        border : "none";
+        color: #555;
+        text-align: center;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius: 0;
+      }
+    </style>
+
+
 </head>
 <body>
     <div class="nav-wrapper">
@@ -47,15 +64,18 @@
     min-width: 250px;
   }
   
+  /* Include the padding and border in an element's total width and height */
   * {
     box-sizing: border-box;
   }
   
+  /* Remove margins and padding from the list */
   ul {
     margin: 0;
     padding: 0;
   }
   
+  /* Style the list items */
   ul li {
     cursor: pointer;
     position: relative;
@@ -65,26 +85,31 @@
     font-size: 18px;
     transition: 0.2s;
     
+    /* make the list items unselectable */
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
   }
- 
+  
+  /* Set all odd list items to a different color (zebra-stripes) */
   ul li:nth-child(odd) {
     background: #f9f9f9;
   }
   
+  /* Darker background-color on hover */
   ul li:hover {
     background: #ddd;
   }
   
+  /* When clicked on, add a background color and strike out text */
   ul li.checked {
     background: #888;
     color: #fff;
     text-decoration: line-through;
   }
   
+  /* Add a "checked" mark when clicked on */
   ul li.checked::before {
     content: '';
     position: absolute;
@@ -97,7 +122,8 @@
     height: 15px;
     width: 7px;
   }
-
+  
+  /* Style the close button */
   .close {
     position: absolute;
     right: 0;
@@ -110,6 +136,7 @@
     color: white;
   }
   
+  /* Style the header */
   .header {
     background-color: #0b26bef8;
     padding: 30px 40px;
@@ -117,12 +144,14 @@
     text-align: center;
   }
   
+  /* Clear floats after the header */
   .header:after {
     content: "";
     display: table;
     clear: both;
   }
   
+  /* Style the input */
   input {
     margin: 0;
     border: none;
@@ -133,6 +162,7 @@
     font-size: 16px;
   }
   
+  /* Style the "Add" button */
   .addBtn {
     padding: 10px;
     width: 25%;
@@ -151,31 +181,64 @@
   }
   </style>
   </head>
-  <body>
-  
+  <body onload="oldList()">
+
   <div id="myDIV" class="header">
     <h2 style="margin:5px">Daily Tasks</h2>
     <input type="text" id="myInput" placeholder="Title...">
     <span onclick="newElement()" class="addBtn">Add</span>
   </div>
+
+  <ul id="myUL"></ul>
   
-  <ul id="myUL">
-  </ul>
-  
-  <form style.display = 'none';>
-    Select your favorite browser:
-    <select id="myList" onchange="myFunction()">
-      <option></option>
-      <option>Google Chrome</option>
-      <option>Firefox</option>  
-      <option>Internet Explorer</option>
-      <option>Safari</option>
-      <option>Opera</option>
-    </select>
-  </form>
+  <button type = "button" onclick="savet()">Save Tasks</button>
+  <button type = "button" onclick="refresh()">Empty List</button>
 
   <script>
 
+  function savet() {
+    var tasks = document.getElementsByClassName("task")
+    console.log(tasks)
+    for(var i = 0; i < tasks.length; i++) {
+      var taskV = tasks[i].textContent;
+      localStorage.setItem(String(i),taskV.substring(0, taskV.length - 1));
+    }
+  }
+
+  window.onbeforeunload = function(){
+    return 'Are you sure you want to erase your tasks? Make sure to save!';
+  };
+
+  function refresh() {
+    for (var i = 0; i < localStorage.length; i++){
+      if(isNaN(localStorage.key(i))) {
+        continue;
+      }
+      else {
+        localStorage.removeItem(localStorage.key(i));
+        
+      }
+    }
+    window.location.reload()
+  }
+  
+  function oldList() {
+    for (var i = 0; i < localStorage.length; i++){
+      if(isNaN(localStorage.key(i))) {
+        continue;
+      }
+      else {
+        var li = document.createElement("li");
+        var inputValue = localStorage.getItem(localStorage.key(i));
+        var t = document.createTextNode(inputValue);
+        li.appendChild(t);
+        
+        document.getElementById("myUL").appendChild(li);
+      }
+    }
+  }
+
+  // Create a "close" button and append it to each list item
   var myNodelist = document.getElementsByTagName("LI");
   var i;
   for (i = 0; i < myNodelist.length; i++) {
@@ -185,7 +248,8 @@
     span.appendChild(txt);
     myNodelist[i].appendChild(span);
   }
-
+  
+  // Click on a close button to hide the current list item
   var close = document.getElementsByClassName("close");
   var i;
   for (i = 0; i < close.length; i++) {
@@ -195,22 +259,18 @@
     }
   }
   
-
+  // Add a "checked" symbol when clicking on a list item
   var list = document.querySelector('ul');
   list.addEventListener('click', function(ev) {
     if (ev.target.tagName === 'LI') {
       ev.target.classList.toggle('checked');
-      showDiv();
     }
   }, false);
-
-  function showDiv() {
-    document.querySelector('ul').style.display = "block";
-  }
-
-
+  
+  // Create a new list item when clicking on the "Add" button
   function newElement() {
     var li = document.createElement("li");
+    li.classList.add("task");
     var inputValue = document.getElementById("myInput").value;
     var t = document.createTextNode(inputValue);
     li.appendChild(t);
@@ -220,7 +280,7 @@
       document.getElementById("myUL").appendChild(li);
     }
     document.getElementById("myInput").value = "";
-  
+
     var span = document.createElement("SPAN");
     var txt = document.createTextNode("\u00D7");
     span.className = "close";
@@ -235,6 +295,75 @@
     }
   }
   </script>
+  
+  </body>
+
+<div class = "feedback">
+  <form>
+    How is your studying going so far?
+    <select id="myList" onchange="calculateAverage()">
+      <option></option>
+      <option>5</option>
+      <option>4</option>  
+      <option>3</option>
+      <option>2</option>
+      <option>1</option>
+      <input type="number" id="toAdd" size="20">
+    </select>
+  </form>
+  
+    <div class="input_prompt">
+    </div>
+    <div class="submission_box">
+      <p id="phrase"></p>
+      <script>
+        function unhide() {
+            var hid = document.getElementsByClassName("exp");
+            
+            if(hid[0].offsetWidth > 0 && hid[0].offsetHeight > 0) {
+                hid[0].style.visibility = "visible";
+            }
+        }
+       </script>
+       
+  <style>
+      .exp{visibility: hidden;}
+  </style>
+  
+    <body>
+     <div class="exp">
+         <p class="and">Thanks for your input!</p>
+      </div>
+  </body>
+</div>
+
+  <script>
+  function calculateAverage(){
+    var mylist = document.getElementById("myList");
+    var toAdd = parseInt(mylist.options[mylist.selectedIndex].text);
+      if (localStorage.getItem("sum") == null) {
+        localStorage.setItem("sum", "0");
+      }
+      if (localStorage.getItem("counter") == null) {
+        localStorage.setItem("counter", "0");
+      }
+      if (localStorage.getItem("average") == null) {
+        localStorage.setItem("average", "0");
+      }
+      
+      var oldSum = parseInt(localStorage.getItem("sum"));
+      var counter = parseInt(localStorage.getItem("counter"));
+      
+      counter = counter + 1;
+      var newSum = oldSum + toAdd;
+      var average =  newSum / counter;
+     
+      localStorage.setItem("sum", newSum);
+      localStorage.setItem("counter", counter);
+      localStorage.setItem("average", average.toFixed(2));
+    }
+  </script>
+  
   
   </body>
 </html>

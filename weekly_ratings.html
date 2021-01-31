@@ -55,7 +55,9 @@
           document.getElementById('output1').innerHTML = "Specific: " + specific;
           document.getElementById('output2').innerHTML = "Measurable: " + measurable;
           document.getElementById('output3').innerHTML = "Relevant: " + relevant;
-          document.getElementById('output4').innerHTML = "Time Bound: " + time_bound
+          document.getElementById('output4').innerHTML = "Time Bound: " + time_bound;
+          document.getElementById('sum').innerHTML = localStorage.getItem("sum");
+        document.getElementById('average').innerHTML = localStorage.getItem("average");
       };
   </script>
 
@@ -72,4 +74,12 @@
       So far, this is your weekly rating:
   </h1>
   </div>
+
+<div class = "description">
+<p id="sum"></p>  
+<p id="average"></p> 
 </div>
+
+</div>
+</body>
+</html>
