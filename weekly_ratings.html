@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "utf-8" />
+    <title>STUDY</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="some_styles.css">
+</head>
+<body>
+    <div class="nav-wrapper">
+
+        <div class="left-side">
+
+            <div class="nav-link-wrapper">
+                <a href="index.html">Home</a>
+            </div>
+
+            <div class="nav-link-wrapper">
+                <a href="goal.html">SMART Goals</a>
+            </div>
+            
+            <div class="nav-link-wrapper">
+                <a href="dailytasks.html">Daily Tasks</a>
+            </div>
+
+            <div class="nav-link-wrapper active-nav-link">
+                <a href ="weekly_ratings.html">Weekly Ratings</a>
+            </div>
+        </div>
+
+        <div class="right-side">
+            <div class="brand">
+                <div>SMART Studying</div>
+            </div>
+        </div>
+
+    </div> 
+
+<div class="round1">
+  <div class="title">
+  <h1>
+      Quick reminder of your SMART goals:
+  </h1>
+  </div>
+
+  <div class="description">
+  <script>
+      window.onload = function() {
+          var specific = localStorage.getItem("S");
+          var measurable = localStorage.getItem("M");
+          var relevant = localStorage.getItem("R");
+          var time_bound = localStorage.getItem("T");
+
+          document.getElementById('output1').innerHTML = "Specific: " + specific;
+          document.getElementById('output2').innerHTML = "Measurable: " + measurable;
+          document.getElementById('output3').innerHTML = "Relevant: " + relevant;
+          document.getElementById('output4').innerHTML = "Time Bound: " + time_bound
+      };
+  </script>
+
+  <p id="output1"></p>  
+  <p id="output2"></p>
+  <p id="output3"></p>
+  <p id="output4"></p>
+  </div>
+</div>
+
+<div class = "round1">
+  <div class="title">
+  <h1>
+      So far, this is your weekly rating:
+  </h1>
+  </div>
+</div>

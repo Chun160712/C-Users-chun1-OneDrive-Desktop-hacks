@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "utf-8" />
+    <title>STUDY</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="some_styles.css">
+    <style>
+      input {
+        width: 100%;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 20px;
+        background-color: #f8f8f8;
+        resize: none;
+      }
+      button {
+        background: #d9d9d9;
+        color: #555;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 10px;
+      }
+    </style>
+</head>
+<body>
+    <div class="nav-wrapper">
+
+        <div class="left-side">
+
+            <div class="nav-link-wrapper">
+                <a href="index.html">Home</a>
+            </div>
+
+            <div class="nav-link-wrapper active-nav-link">
+                <a href="goal.html">SMART Goals</a>
+            </div>
+            
+            <div class="nav-link-wrapper">
+                <a href="dailytasks.html">Daily Tasks</a>
+            </div>
+
+            <div class="nav-link-wrapper">
+                <a href ="weekly_ratings.html">Weekly Ratings</a>
+            </div>
+        </div>
+
+        <div class="right-side">
+            <div class="brand">
+                <div>SMART Studying</div>
+            </div>
+        </div>
+
+    </div> 
+
+<form action="#" method="post">
+  
+<div class = "round1">
+  <div class = "title">
+    <h1>S for Specific!</h1>
+  </div>
+
+  <div class = "description">
+    <p>States in clear terms what outcome, result or behaviour is to be achieved.</p>
+  </div>
+    
+  <div class="questions">
+    <p>
+      Questions to consider:<br/>
+      What do I want to accomplish on this goal?<br/>
+      How will I accomplish it?<br/>
+      Why do I want to accomplish is?<br/>
+      Who will need to be involved?<br/>
+    </p>
+  </div> 
+    
+  <div class="input_prompt">
+    <p>Enter a Specific goal to accomplish:</p>
+  </div>
+  <div class="submission_box">
+    <p><input type="text" id="s" /></p>
+  </div>
+</div>
+
+<div class = "round1">
+  <div class = "title">
+    <h1>M for measurable!</h1>
+  </div>
+
+  <div class = "description">
+    <p>Includes a description of the desired outcome and/or measurable results.</p>
+  </div>
+    
+  <div class="questions">
+    <p>
+      Questions to consider:<br/>
+      How will I measure this?<br/>
+      How will I know when I’ve completed it?<br/>
+      How will I know if I’m on track to complete this goal?<br/>
+    </p>
+  </div>
+
+  <div class="input_prompt">
+    <p>Enter method of Measuring your goal:</p>
+  </div>
+  <div class="submission_box">
+    <p><input type="text" id="m" /></p>
+  </div>
+</div>
+
+<div class = "round1">
+  <div class = "title">
+    <h1>A for Achievable!</h1>
+  </div>
+
+  <div class = "description">
+    <p>A realistic expectation, given time and resources.</p>
+  </div>
+    
+  <div class="questions">
+    <p>
+      Questions to consider:<br/>
+      Do I have the skills and knowledge currently to achieve this goal?<br/>
+      Is this the right time for me to work on this goal?<br/>
+      Do I have enough time and resources to achieve this goal?<br/>
+      Does this goal challenge me in the right way?<br/>
+    </p>
+  </div>
+
+  <div class="input_prompt">
+    <p>Is your goal achievable? Be realistic and honest!></p>
+  </div>
+  <div class="submission_box">
+    <p id="phrase"></p>
+    <script>
+      function unhide() {
+          var hid = document.getElementsByClassName("exp");
+          
+          if(hid[0].offsetWidth > 0 && hid[0].offsetHeight > 0) {
+              hid[0].style.visibility = "visible";
+          }
+      }
+
+      function unhide2() {
+        var hid = document.getElementsByClassName("exp2");
+          if(hid[0].offsetWidth > 0 && hid[0].offsetHeight > 0) {
+              hid[0].style.visibility = "visible";
+          }
+      }
+      </script>
+
+    <style>
+      .exp{visibility: hidden;}
+    </style>
+    <body>
+    <button type = "button" onclick="unhide()">Yes</button>
+    <div class="exp">
+        <p class="and">Great! Continue to R!</p>
+    </div>
+
+    <style>
+      .exp2{visibility: hidden;}
+    </style>
+    </body>
+    <body>
+    <button type = "button" onclick="unhide2()">No</button>
+    <div class="exp2">
+        <p class="and">Edit your goal to make it more achievable!</p>
+    </div>
+    </body>
+  </div>
+</div>
+
+<div class = "round1">
+  <div class = "title">
+    <h1>R for Relevant!</h1>
+  </div>
+
+  <div class = "description">
+    <p>There is a clear link to the goals of the department, division, the company and its values.</p>
+  </div>
+  
+  <div class="questions">
+    <p>
+      Questions to consider: <br/>
+      Is this worth my time and effort?<br/>
+      How does this link to my future path?<br/>
+      Is this the right time to complete this program for me?<br/>
+    </p>
+  </div>
+
+  <div class="input_prompt">
+    <p>How relavant and significant is your goal?<p/>
+  </div>
+  <div class="submission_box">
+    <p><input type="text" id="r" /></p>
+  </div>
+</div>
+
+<div class = "round1">
+  <div class = "title">
+    <h1>T for Time-Bound!</h1>
+  </div>
+
+  <div class = "description">
+    <p>There is a time limit or deadline by which the objective must be achieved, and there may be a time frame to track phases of completion in an action plan.</p>
+  </div>
+    
+  <div class="questions">
+    <p>
+      Questions to consider:<br/>
+      When do I want to complete the program by?<br/>
+      How long do I want to allocate to each module?<br/>
+      How will I track my progress against time per module?<br/>
+      What is my target end date?<br/>
+    </p>
+  </div>
+    
+  <div class="input_prompt">
+    <p>When is the target date of your goal? (Think of it carefully as you will be breaking it down into smaller tasks and integrating them into your daily routine!)</p>
+  </div>
+  <div class="submission_box">
+    <p><input type="text" id="t" /></p> 
+  </div>
+</div>
+
+<div class = "round1">
+  <div class="submission_box">
+    <button onclick = "save()"> Submit</button>
+  </div>
+  </form>
+</div>
+
+<script>
+  function save(){
+    var Item1 = document.getElementById("s").value;
+    var Item2 = document.getElementById("m").value;
+    var Item3 = document.getElementById("r").value;
+    var Item4 = document.getElementById("t").value;
+
+    localStorage.setItem("S", Item1);
+    localStorage.setItem("M", Item2);
+    localStorage.setItem("R", Item3);
+    localStorage.setItem("T", Item4);
+  }
+
+</script>
